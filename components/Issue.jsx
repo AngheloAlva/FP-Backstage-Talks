@@ -4,7 +4,7 @@ const Issue = ({
   buyLink = ['', ''],
   buyLink2 = ['', ''],
   buyText = false,
-  desc = ''
+  desc = false
 }) => {
   return (
     <div className='issue-container'>
@@ -21,7 +21,9 @@ const Issue = ({
       {
         buyText && <p>or in <a href="#">selected stores</a>.</p>
       }
-      <p>{desc}</p>
+      {
+        desc && <p>If you ar lucky, you may get the last pieces in <a href="#">selected stores</a>.</p>
+      }
     </div>
   )
 }
