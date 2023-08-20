@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import Footer from '../components/Footer'
 import Issue from '../components/Issue'
 import './App.css'
 
@@ -57,6 +58,7 @@ function App () {
         desc
         buyText
       />
+      <Footer />
     </>
   )
 }
