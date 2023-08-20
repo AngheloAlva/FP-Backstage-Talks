@@ -45,3 +45,60 @@ footer a {
 .footer__email:hover {
   text-decoration: underline;
 }
+
+.footer__email {
+  font-size: 1.125rem;
+}
+
+.footer__issues {
+  display: none;
+  flex-direction: column;
+  font-weight: 400;
+}
+
+.footer__issues ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  footer {
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .footer__desc {
+    width: 15.625rem;
+    text-align: left;
+  }
+
+  .footer__links {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 10%;
+  }
+}
+
+@media (min-width: 992px) {
+  .footer__email {
+    position: fixed;
+    top: 1.313rem;
+    right: .938rem;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+  }
+
+  .footer__issues {
+    display: flex;
+    position: fixed;
+    bottom: 1.375rem;
+    right: .938rem;
+  }
+}

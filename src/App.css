@@ -24,3 +24,19 @@ main {
 main a {
   color: var(--pink);
 }
+
+@media (min-width: 768px) {
+  .logo-img {
+    height: 1.813rem;
+  }
+}
+
+@media (min-width: 992px) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  .logo-img {
+    position: fixed;
+  }
+}
