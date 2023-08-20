@@ -1,0 +1,47 @@
+footer {
+  height: 17.313rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1.125rem;
+  padding: 0 .938rem;
+  background-color: var(--red);
+  color: #251d20;
+  font-weight: 700;
+}
+
+footer p, footer h3 {
+  margin: 0;
+}
+
+footer a {
+  text-decoration: none;
+  color: #251d20;
+}
+
+.footer__copyright {
+  font-size: .75rem;
+  font-weight: 400;
+  margin: 1rem 0 2rem;
+}
+
+.footer__copyright a {
+  text-decoration: underline;
+}
+
+.footer__copyright a:hover {
+  text-decoration: none;
+}
+
+.footer__policy {
+  margin-bottom: 3.313rem;
+  text-decoration: underline;
+}
+
+.footer__policy:hover {
+  text-decoration: none;
+}
+
+.footer__email:hover {
+  text-decoration: underline;
+}
