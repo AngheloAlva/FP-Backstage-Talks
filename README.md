@@ -1,6 +1,6 @@
-## Backstage Talks - FrontEnd Practice
+# Backstage Talks - FrontEnd Practice
 
-# Para recrear el proyecto:
+## Para recrear el proyecto:
 - Scroll transitions.
 - Color choices.
 - Fixed content.
