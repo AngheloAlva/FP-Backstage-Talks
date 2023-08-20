@@ -6,7 +6,8 @@ const Issue = ({
   buyLink = ['', ''],
   buyLink2 = ['', ''],
   buyText = false,
-  desc = false
+  desc = false,
+  linkColor
 }) => {
   return (
     <div className='issue-container'>
@@ -14,18 +15,18 @@ const Issue = ({
       <div className='issue-text'>
         <h3>{title}</h3>
         <p>
-          <a href='#'>{buyLink[0]} </a>
+          <a href='#' style={{ color: linkColor }}>{buyLink[0]} </a>
           {buyLink[1]}
         </p>
         <p>
-          <a href="#">{buyLink2[0]} </a>
+          <a href="#" style={{ color: linkColor }}>{buyLink2[0]} </a>
           {buyLink2[1]}
         </p>
         {
-          buyText && <p style={{ marginTop: '.938rem' }}>or in <a href="#">selected stores</a>.</p>
+          buyText && <p style={{ marginTop: '.938rem' }}>or in <a href="#" style={{ color: linkColor }}>selected stores</a>.</p>
         }
         {
-          desc && <p>If you ar lucky, you may get the last pieces in <a href="#">selected stores</a>.</p>
+          desc && <p>If you ar lucky, you may get the last pieces in <a href="#" style={{ color: linkColor }}>selected stores</a>.</p>
         }
       </div>
     </div>

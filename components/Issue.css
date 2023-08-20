@@ -8,7 +8,8 @@
 }
 
 .issue-img {
-  width: 26.25rem;
+  max-width: 26.25rem;
+  width: 80%;
 }
 
 .issue-text {
@@ -36,6 +37,7 @@
 .issue-text a {
   text-decoration: none;
   color: #FFFFFF;
+  transition: all 0.3s ease-in-out;
 }
 
 .issue-text a:hover {
