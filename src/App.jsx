@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Footer from '../components/Footer'
 import Issue from '../components/Issue'
 import './App.css'
 
 function App () {
+  const issuesRef = useRef(null)
   const [bgColor, setBgColor] = useState('var(--pink)')
   const [fitstLinkColor, setFirstLinkColor] = useState('var(--pink)')
   const imgLinks = [
@@ -17,7 +18,7 @@ function App () {
     '../src/assets/backstagetalks_cover2016_n.png'
   ]
 
-  const handleScroll = () => {
+  const handleBgColor = () => {
     if (window.scrollY > window.innerHeight * 5.5) {
       setBgColor('var(--red)')
     } else if (window.scrollY > window.innerHeight * 4.5) {
@@ -39,8 +40,28 @@ function App () {
   }
 
   useEffect(() => {
+    const handleScroll = () => {
+      const windowWidth = window.innerWidth
+      if (windowWidth > 992 && issuesRef.current) {
+        const issuesRect = issuesRef.current.getBoundingClientRect()
+        const issuesCenter = issuesRect.top + issuesRect.height / 2
+        const issues = Array.from(document.querySelectorAll('.issue'))
+        const currentIndex = issues.findIndex(issue => {
+          const issueRect = issue.getBoundingClientRect()
+          return issueRect.top + issueRect.height / 2 > issuesCenter
+        })
+        if (currentIndex !== -1) {
+          issues[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }
+      }
+    }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleBgColor)
+    return () => window.removeEventListener('scroll', handleBgColor)
   }, [])
 
   return (
