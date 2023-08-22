@@ -1,13 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useRef, useState } from 'react'
+import { Element, scroller } from 'react-scroll'
 import Footer from '../components/Footer'
 import Issue from '../components/Issue'
 import './App.css'
 
 function App () {
-  const issuesRef = useRef(null)
   const [bgColor, setBgColor] = useState('var(--pink)')
   const [fitstLinkColor, setFirstLinkColor] = useState('var(--pink)')
+  const [currentIssue, setCurrentIssue] = useState(1)
+  const [lastScrollPsotition, setLastScrollPosition] = useState(0)
   const imgLinks = [
     '../src/assets/backstagetalks_cover_issue_7.png',
     '../src/assets/backstagetalks_cover_issue_6.png',
@@ -39,22 +41,50 @@ function App () {
     }
   }
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const windowWidth = window.innerWidth
-      if (windowWidth > 992 && issuesRef.current) {
-        const issuesRect = issuesRef.current.getBoundingClientRect()
-        const issuesCenter = issuesRect.top + issuesRect.height / 2
-        const issues = Array.from(document.querySelectorAll('.issue'))
-        const currentIndex = issues.findIndex(issue => {
-          const issueRect = issue.getBoundingClientRect()
-          return issueRect.top + issueRect.height / 2 > issuesCenter
-        })
-        if (currentIndex !== -1) {
-          issues[currentIndex].scrollIntoView({ behavior: 'smooth', block: 'center' })
-        }
-      }
+  const scrollToNextIssue = (currentIssue) => {
+    let nextIssue = currentIssue
+
+    if (nextIssue < 7) {
+      nextIssue += 1
+      setCurrentIssue(nextIssue)
     }
+
+    scroller.scrollTo(`issue-${nextIssue}`, {
+      duration: 500,
+      delay: 0,
+      smooth: 'easeInOutQuart'
+    })
+  }
+
+  const scrollToPrevIssue = (currentIssue) => {
+    let prevIssue = currentIssue
+
+    if (prevIssue > 1) {
+      prevIssue -= 1
+      setCurrentIssue(prevIssue)
+    }
+
+    scroller.scrollTo(`issue-${prevIssue}`, {
+      duration: 500,
+      delay: 0,
+      smooth: 'easeInOutQuart'
+    })
+  }
+
+  const handleScroll = () => {
+    const scrollPostion = window.pageYOffset
+
+    if (window.innerWidth > 992) {
+      if (scrollPostion > lastScrollPsotition) {
+        scrollToNextIssue(currentIssue)
+      } else {
+        scrollToPrevIssue(currentIssue)
+      }
+      setLastScrollPosition(scrollPostion)
+    }
+  }
+
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -70,50 +100,71 @@ function App () {
         <img src='../src/assets/logo.png' alt= 'logo' className='logo-img' />
       </header>
       <main style={{ backgroundColor: bgColor }}>
-        <Issue
-          img={imgLinks[0]}
-          title={'Issue #7'}
-          buyLink={['BUY HERE', '(Europe)']}
-          buyLink2={['BUY HERE', '(UK & Overseas)']}
-          buyText
-          bgColor={'var(--orange)'}
-          linkColor={fitstLinkColor}
-        />
-        <Issue
-          img={imgLinks[1]}
-          title={'Issue #6'}
-          buyLink={['BUY HERE']}
-          buyText
-          linkColor={fitstLinkColor}
-        />
-        <Issue
-          img={imgLinks[2]}
-          title={'Issue #5'}
-          buyLink={['BUY HERE']}
-          buyText
-        />
-        <Issue
-          img={imgLinks[3]}
-          title={'Issue #4 is sold out.'}
-          desc
-        />
-        <Issue
-          img={imgLinks[4]}
-          title={'Issue #3'}
-          buyLink={['BUY HERE']}
-          buyText
-        />
-        <Issue
-          img={imgLinks[5]}
-          title={'Issue #2'}
-          buyLink={['BUY HERE']}
-          buyText
-        />
-        <Issue
-          img={imgLinks[6]}
-          title={'Issue #1 is sold out.'}
-          desc
-        />
+        <Element name='issue-7'>
+          <Issue
+            id='issue-7'
+            img={imgLinks[0]}
+            title={'Issue #7'}
+            buyLink={['BUY HERE', '(Europe)']}
+            buyLink2={['BUY HERE', '(UK & Overseas)']}
+            buyText
+            bgColor={'var(--orange)'}
+            linkColor={fitstLinkColor}
+          />
+        </Element>
+        <Element name='issue-6'>
+          <Issue
+            id='issue-6'
+            img={imgLinks[1]}
+            title={'Issue #6'}
+            buyLink={['BUY HERE']}
+            buyText
+            linkColor={fitstLinkColor}
+          />
+        </Element>
+        <Element name='issue-5'>
+          <Issue
+            id='issue-5'
+            img={imgLinks[2]}
+            title={'Issue #5'}
+            buyLink={['BUY HERE']}
+            buyText
+          />
+        </Element>
+        <Element name='issue-4'>
+          <Issue
+            id='issue-4'
+            img={imgLinks[3]}
+            title={'Issue #4 is sold out.'}
+            desc
+          />
+        </Element>
+        <Element name='issue-3'>
+          <Issue
+            id='issue-3'
+            img={imgLinks[4]}
+            title={'Issue #3'}
+            buyLink={['BUY HERE']}
+            buyText
+          />
+        </Element>
+        <Element name='issue-2'>
+          <Issue
+            id='issue-2'
+            img={imgLinks[5]}
+            title={'Issue #2'}
+            buyLink={['BUY HERE']}
+            buyText
+          />
+        </Element>
+        <Element name='issue-1'>
+          <Issue
+            id='issue-1'
+            img={imgLinks[6]}
+            title={'Issue #1 is sold out.'}
+            desc
+          />
+        </Element>
       </main>
       <Footer />
     </>
