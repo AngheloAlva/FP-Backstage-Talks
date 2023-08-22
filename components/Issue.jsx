@@ -1,6 +1,7 @@
+import React from 'react'
 import './Issue.css'
 
-const Issue = ({
+const Issue = React.forwardRef(({
   img,
   title,
   buyLink = ['', ''],
@@ -8,9 +9,9 @@ const Issue = ({
   buyText = false,
   desc = false,
   linkColor
-}) => {
+}, ref) => {
   return (
-    <div className='issue-container'>
+    <div className='issue-container' ref={ref}>
       <img src={img} alt={title} className="issue-img" />
       <div className='issue-text'>
         <h3>{title}</h3>
@@ -31,6 +32,6 @@ const Issue = ({
       </div>
     </div>
   )
-}
+})
 
 export default Issue
