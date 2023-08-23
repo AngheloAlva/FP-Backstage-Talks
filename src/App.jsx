@@ -207,7 +207,15 @@ function App () {
           desc
         />
       </main>
-      <Footer />
+      <Footer
+        issue7Ref={issue7Ref}
+        issue6Ref={issue6Ref}
+        issue5Ref={issue5Ref}
+        issue4Ref={issue4Ref}
+        issue3Ref={issue3Ref}
+        issue2Ref={issue2Ref}
+        issue1Ref={issue1Ref}
+      />
     </>
   )
 }

@@ -1,6 +1,6 @@
 import './Footer.css'
 
-const Footer = () => {
+const Footer = ({ issue1Ref, issue2Ref, issue3Ref, issue4Ref, issue5Ref, issue6Ref, issue7Ref }) => {
   return (
     <footer>
       <p className='footer__desc'>
@@ -17,13 +17,13 @@ const Footer = () => {
 
       <div className='footer__issues'>
         <ul>
-          <li>Issue #7</li>
-          <li>Issue #6</li>
-          <li>Issue #5</li>
-          <li>Issue #4</li>
-          <li>Issue #3</li>
-          <li>Issue #2</li>
-          <li>Issue #1</li>
+          <li onClick={() => window.scrollTo({ behavior: 'smooth', top: issue1Ref.current.offsetTop })}>Issue #7</li>
+          <li onClick={() => window.scrollTo({ behavior: 'smooth', top: issue2Ref.current.offsetTop })}>Issue #6</li>
+          <li onClick={() => window.scrollTo({ behavior: 'smooth', top: issue3Ref.current.offsetTop })}>Issue #5</li>
+          <li onClick={() => window.scrollTo({ behavior: 'smooth', top: issue4Ref.current.offsetTop })}>Issue #4</li>
+          <li onClick={() => window.scrollTo({ behavior: 'smooth', top: issue5Ref.current.offsetTop })}>Issue #3</li>
+          <li onClick={() => window.scrollTo({ behavior: 'smooth', top: issue6Ref.current.offsetTop })}>Issue #2</li>
+          <li onClick={() => window.scrollTo({ behavior: 'smooth', top: issue7Ref.current.offsetTop })}>Issue #1</li>
         </ul>
       </div>
     </footer>
