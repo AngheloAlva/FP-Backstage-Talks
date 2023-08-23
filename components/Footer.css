@@ -63,6 +63,14 @@ footer a {
   cursor: pointer;
 }
 
+.footer__issues ul li {
+  margin-bottom: .3rem;
+}
+
+.footer__issues ul li:hover {
+  text-decoration: underline;
+}
+
 @media (min-width: 768px) {
   footer {
     align-items: flex-start;

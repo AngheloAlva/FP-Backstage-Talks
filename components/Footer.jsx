@@ -12,7 +12,7 @@ const Footer = ({ issue1Ref, issue2Ref, issue3Ref, issue4Ref, issue5Ref, issue6R
 
       <div className='footer__links'>
         <h3 className='footer__policy'><a href="#">Privacy Policy</a></h3>
-          <h3 className='footer__email'><a href="#">info@backstagestalks.com</a></h3>
+          <h3 className='footer__email'><a href="#">info@backstagetalks.com</a></h3>
       </div>
 
       <div className='footer__issues'>
