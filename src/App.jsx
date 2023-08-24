@@ -27,7 +27,7 @@ function App () {
   const handleBgColor = () => {
     const scrollPosition = window.pageYOffset
 
-    if (scrollPosition > issue6Ref.current.offsetTop) {
+    if (scrollPosition > issue6Ref.current.offsetTop + issue6Ref.current.offsetHeight / 1.8) {
       setBgColor('var(--red)')
     } else if (scrollPosition > issue5Ref.current.offsetTop + issue5Ref.current.offsetHeight / 1.8) {
       setBgColor('var(--blue)')
